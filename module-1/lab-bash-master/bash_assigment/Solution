@@ -1,0 +1,12 @@
+To display all python files ".py" and then show how many lines of code each file has, we should use the wc and find command. We need to use them at the same type, that is, in the same execution or line.
+
+This command will count how many lines the file <filename> has
+wc -l <filename>
+
+This command displays all files that contain .py anywhere in its name. Its case insensitive (iname)
+find -iname "*.py*" -type f
+
+the pipe operator | allows you to merge two commands together, the first command result will be passed into the second one. 
+
+The whole command we should use should be somewhat like this:
+find -iname "*.py*" -type f | wc -l
