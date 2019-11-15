@@ -28,33 +28,35 @@ if a.shape != b.shape:
     print(f"You cannot add two arrays with different shapes. A = {a.shape} and B = {b.shape}")
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
-c = b.transpose()
-d = c.transpose()
+c = b.reshape(2,3,5)
 print(c.shape)
-print(d.shape)
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
-
-
+if a.shape == c.shape:
+    d = a + c
+print(d)  #it works because both arrays have the same shape
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
-
-
-
+print("ejercicio 11")
+print(a)
+print(d)  #items in array d are bigger than those in array a since array d is a result of adding arrays a and c
 
 #12. Multiply a and c. Assign the result to e.
-
-
+e = a * c
 
 #13. Does e equal to a? Why or why not?
-
-
+print("Ejercicio 12")
+if np.array_equal(a,e):
+    print("Equal!")
+else:
+    print("not equal")
 
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
-
-
-
+print("Exercise 14")
+print(d.ndarray.max)
+print(d.ndarray.min)
+print(d.ndarray.mean)
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
