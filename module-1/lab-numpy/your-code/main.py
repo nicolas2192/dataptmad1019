@@ -3,7 +3,7 @@ import numpy as np
 
 #2. Print the NUMPY version and the configuration.
 
-
+print(np.__version__)
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
@@ -17,6 +17,7 @@ print(a)
 b = np.random.random((5,2,3))
 
 #6. Print b.
+print("Exercise 6")
 print(b)
 
 #7. Do a and b have the same size? How do you prove that in Python code?
@@ -45,23 +46,28 @@ print(d)  #items in array d are bigger than those in array a since array d is a 
 e = a * c
 
 #13. Does e equal to a? Why or why not?
-print("Ejercicio 12")
+print("Ejercicio 13")
+
+print("Equal!" if np.array_equal(a,e) else "not equal")
+
 if np.array_equal(a,e):
     print("Equal!")
 else:
     print("not equal")
 
-
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
 print("Exercise 14")
-print(d.ndarray.max)
-print(d.ndarray.min)
-print(d.ndarray.mean)
+d_max = d.max()
+d_min = d.min()
+d_mean = np.mean(d)
+
+print(f"The minimum value is: {d_min}")
+print(f"The mean value is: {d_mean}")
+print(f"The maximum value is: {d_max}")
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
-
-
+f = np.empty((2,3,5))
 
 """
 #16. Populate the values in f. For each value in d, if it's larger than d_min but smaller than d_mean, assign 25 to the corresponding value in f.
@@ -73,7 +79,19 @@ In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
 
-
+for x in range(2):
+    for y in range(3):
+        for z in range(5):
+            if d_min < d[x][y][z] < d_mean:
+                f[x, y, z] = 25
+            if d_mean < d[x][y][z] < d_max:
+                f[x, y, z] = 75
+            if d[x][y][z] == d_mean:
+                f[x, y, z] = 50
+            if d[x][y][z] <= d_min:
+                f[x, y, z] = 0
+            if d[x][y][z] >= d_max:
+                f[x, y, z] = 100
 
 
 """
@@ -96,7 +114,8 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
+print(d)
+print(f)
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -110,3 +129,23 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+let = np.chararray((2,3,5))
+
+for x in range(2):
+    for y in range(3):
+        for z in range(5):
+            if f[x, y, z] == 25:
+                let[x, y, z] = "D"
+            if f[x, y, z] == 75:
+                let[x, y, z] = "B"
+            if f[x, y, z] == 50:
+                let[x, y, z] = "C"
+            if f[x, y, z] == 0:
+                let[x, y, z] = "E"
+            if f[x, y, z] == 100:
+                let[x, y, z] = "A"
+
+print(let)
+
+print(let[0][2][3])
+
